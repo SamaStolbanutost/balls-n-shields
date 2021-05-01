@@ -22,6 +22,7 @@ extents = Vector2( 124, 300 )
 [node name="backgroud" type="Sprite" parent="."]
 position = Vector2( 512, 300 )
 scale = Vector2( 10, 10 )
+z_index = -99
 texture = ExtResource( 10 )
 
 [node name="player" parent="." instance=ExtResource( 1 )]

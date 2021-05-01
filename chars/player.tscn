@@ -13,6 +13,7 @@ radius = 38.0
 scale = Vector2( 0.5, 0.5 )
 
 [node name="orbite" type="Sprite" parent="."]
+z_index = -2
 texture = ExtResource( 1 )
 
 [node name="shield_body" type="KinematicBody2D" parent="."]
