@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://chars/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/arrow.png" type="Texture" id=2]
+[ext_resource path="res://scripts/player.gd" type="Script" id=3]
+[ext_resource path="res://scripts/balls_generator.gd" type="Script" id=4]
+[ext_resource path="res://sprites/highlight.png" type="Texture" id=5]
+[ext_resource path="res://scripts/text_update.gd" type="Script" id=6]
+[ext_resource path="res://sprites/lose.png" type="Texture" id=7]
+[ext_resource path="res://sprites/restart_button/restart_mouse_on.png" type="Texture" id=8]
+[ext_resource path="res://sprites/restart_button/restart_normal.png" type="Texture" id=9]
+[ext_resource path="res://sprites/backgroud.png" type="Texture" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 124, 300 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 124, 300 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="backgroud" type="Sprite" parent="."]
+position = Vector2( 512, 300 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 10 )
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 512, 300 )
+script = ExtResource( 3 )
+
+[node name="turn-right" type="TouchScreenButton" parent="."]
+position = Vector2( 900, 300 )
+shape = SubResource( 1 )
+shape_centered = false
+
+[node name="arrow" type="Sprite" parent="turn-right"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="highlight" type="Sprite" parent="turn-right"]
+visible = false
+scale = Vector2( 0.33, 0.79 )
+texture = ExtResource( 5 )
+
+[node name="turn-left" type="TouchScreenButton" parent="."]
+position = Vector2( 124, 300 )
+scale = Vector2( -1, 1 )
+shape = SubResource( 2 )
+shape_centered = false
+
+[node name="arrow" type="Sprite" parent="turn-left"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="highlight" type="Sprite" parent="turn-left"]
+visible = false
+scale = Vector2( 0.33, 0.79 )
+texture = ExtResource( 5 )
+
+[node name="balls_generator" type="Node2D" parent="."]
+position = Vector2( 512, 300 )
+script = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 250.0
+margin_right = 775.0
+margin_bottom = 56.0
+text = "Score: 0"
+align = 1
+valign = 1
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lose" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite" type="Sprite" parent="lose"]
+position = Vector2( 512, 300 )
+texture = ExtResource( 7 )
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="lose"]
+position = Vector2( 370, 320 )
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 9 )
+pressed = ExtResource( 8 )
+
+[connection signal="pressed" from="turn-right" to="player" method="turn_right_pressed"]
+[connection signal="released" from="turn-right" to="player" method="turn_right_released"]
+[connection signal="pressed" from="turn-left" to="player" method="turn_left_pressed"]
+[connection signal="released" from="turn-left" to="player" method="turn_left_released"]
+[connection signal="released" from="lose/TouchScreenButton" to="player" method="restart_game"]
