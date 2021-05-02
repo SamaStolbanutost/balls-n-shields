@@ -13,7 +13,10 @@ func _ready():
 func _physics_process(delta):
 	timer += delta
 	if timer <= global.speed / 2:
-		$".".modulate.a = timer / 2
+		if global.speed < 1.0:
+			$".".modulate.a = timer
+		else:
+			$".".modulate.a = timer / 2
 	if timer >= global.speed:
 		if $laser/laser_collision.get_overlapping_bodies() != []:
 			global._game = false

@@ -78,6 +78,7 @@ __meta__ = {
 }
 
 [node name="lose" type="Node2D" parent="."]
+visible = false
 
 [node name="Sprite" type="Sprite" parent="lose"]
 position = Vector2( 512, 300 )
