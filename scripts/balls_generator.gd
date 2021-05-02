@@ -8,6 +8,6 @@ func _physics_process(delta):
 	if global._game:
 		balls = preload_balls.instance()
 		timer += delta
-		if timer >= 1.6:
+		if timer >= global.speed + 0.1:
 			get_parent().add_child(balls)
 			timer = 0

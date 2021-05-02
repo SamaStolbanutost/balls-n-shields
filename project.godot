@@ -11,12 +11,16 @@ config_version=4
 [application]
 
 config/name="Balls-n-shields"
-run/main_scene="res://scenes/gameplay.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://scenes/main_menu.tscn"
+config/icon="res://sprites/logo.png"
 
 [autoload]
 
 global="*res://global_parameters.gd"
+
+[debug]
+
+settings/stdout/print_fps=true
 
 [display]
 
