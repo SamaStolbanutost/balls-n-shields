@@ -27,3 +27,8 @@ func restart_game():
 	global.score = 0
 	global._game = true
 	get_tree().reload_current_scene()
+
+func go_back():
+	global.score = 0
+	global._game = true
+	get_tree().change_scene("res://scenes/gamemode_selection.tscn")

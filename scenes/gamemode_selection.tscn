@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://sprites/backgroud.png" type="Texture" id=1]
 [ext_resource path="res://sprites/laser-room.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://sprites/shield.png" type="Texture" id=6]
 [ext_resource path="res://sprites/go_back.png" type="Texture" id=7]
 [ext_resource path="res://scripts/triangle_generator.gd" type="Script" id=8]
+[ext_resource path="res://sprites/ball_crush.png" type="Texture" id=9]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
@@ -34,6 +35,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="lr_button2" type="TouchScreenButton" parent="."]
+position = Vector2( 409.6, 340 )
+scale = Vector2( 0.2, 0.2 )
+normal = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="lr_button2"]
+margin_top = 1024.0
+margin_right = 220.0
+margin_bottom = 1049.0
+rect_scale = Vector2( 5, 5 )
+text = "Ball crush"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Choose_gm_label" type="Label" parent="."]
 margin_right = 1024.0
 margin_bottom = 60.0
@@ -44,23 +62,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="choose_diff_lr" type="Sprite" parent="."]
+[node name="choose_diff" type="Sprite" parent="."]
 visible = false
 position = Vector2( 512, 300 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 4 )
 
-[node name="hard_mode" type="TouchScreenButton" parent="choose_diff_lr"]
+[node name="hard_mode" type="TouchScreenButton" parent="choose_diff"]
 position = Vector2( 44, 0 )
 scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 5 )
 
-[node name="easy_mode" type="TouchScreenButton" parent="choose_diff_lr"]
+[node name="easy_mode" type="TouchScreenButton" parent="choose_diff"]
 position = Vector2( -300, 0 )
 scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 6 )
 
-[node name="close" type="TouchScreenButton" parent="choose_diff_lr"]
+[node name="close" type="TouchScreenButton" parent="choose_diff"]
 position = Vector2( 295, -405 )
 scale = Vector2( 0.4, 0.4 )
 normal = ExtResource( 5 )
@@ -79,7 +97,8 @@ position = Vector2( 200, 40 )
 normal = ExtResource( 7 )
 
 [connection signal="released" from="lr_button" to="." method="laser_room"]
-[connection signal="released" from="choose_diff_lr/hard_mode" to="." method="hard_mode_lr"]
-[connection signal="released" from="choose_diff_lr/easy_mode" to="." method="easy_mode_lr"]
-[connection signal="released" from="choose_diff_lr/close" to="." method="close_diff_choose_lr"]
+[connection signal="released" from="lr_button2" to="." method="ball_crush"]
+[connection signal="released" from="choose_diff/hard_mode" to="." method="hard_mode"]
+[connection signal="released" from="choose_diff/easy_mode" to="." method="easy_mode"]
+[connection signal="released" from="choose_diff/close" to="." method="close_diff_choose"]
 [connection signal="released" from="go_back_button" to="." method="go_back"]
