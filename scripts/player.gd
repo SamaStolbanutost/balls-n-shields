@@ -24,11 +24,17 @@ func _physics_process(delta):
 			$".".rotation_degrees += speed
 
 func restart_game():
+	$"../AudioStreamPlayer".stream = global.select_sound
+	$"../AudioStreamPlayer".play()
+	yield($"../AudioStreamPlayer", "finished")
 	global.score = 0
 	global._game = true
 	get_tree().reload_current_scene()
 
 func go_back():
+	$"../AudioStreamPlayer".stream = global.select_sound
+	$"../AudioStreamPlayer".play()
+	yield($"../AudioStreamPlayer", "finished")
 	global.score = 0
 	global._game = true
 	get_tree().change_scene("res://scenes/gamemode_selection.tscn")

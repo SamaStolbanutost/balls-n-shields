@@ -17,3 +17,4 @@ func _physics_process(delta):
 			elif global.game_mode == "bc":
 				get_parent().add_child(objects_instance[1])
 			timer = 0
+			print(global.game_mode)

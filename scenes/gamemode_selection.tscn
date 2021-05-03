@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://sprites/backgroud.png" type="Texture" id=1]
 [ext_resource path="res://sprites/laser-room.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://sprites/go_back.png" type="Texture" id=7]
 [ext_resource path="res://scripts/triangle_generator.gd" type="Script" id=8]
 [ext_resource path="res://sprites/ball_crush.png" type="Texture" id=9]
+[ext_resource path="res://sounds/select.wav" type="AudioStream" id=10]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
@@ -35,12 +36,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="lr_button2" type="TouchScreenButton" parent="."]
+[node name="bc_button" type="TouchScreenButton" parent="."]
 position = Vector2( 409.6, 340 )
 scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 9 )
 
-[node name="Label" type="Label" parent="lr_button2"]
+[node name="Label" type="Label" parent="bc_button"]
 margin_top = 1024.0
 margin_right = 220.0
 margin_bottom = 1049.0
@@ -96,8 +97,11 @@ script = ExtResource( 8 )
 position = Vector2( 200, 40 )
 normal = ExtResource( 7 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
 [connection signal="released" from="lr_button" to="." method="laser_room"]
-[connection signal="released" from="lr_button2" to="." method="ball_crush"]
+[connection signal="released" from="bc_button" to="." method="ball_crush"]
 [connection signal="released" from="choose_diff/hard_mode" to="." method="hard_mode"]
 [connection signal="released" from="choose_diff/easy_mode" to="." method="easy_mode"]
 [connection signal="released" from="choose_diff/close" to="." method="close_diff_choose"]

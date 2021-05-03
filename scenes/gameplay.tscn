@@ -92,9 +92,11 @@ pressed = ExtResource( 8 )
 position = Vector2( 720, 70 )
 normal = ExtResource( 11 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="pressed" from="turn-right" to="player" method="turn_right_pressed"]
 [connection signal="released" from="turn-right" to="player" method="turn_right_released"]
 [connection signal="pressed" from="turn-left" to="player" method="turn_left_pressed"]
 [connection signal="released" from="turn-left" to="player" method="turn_left_released"]
 [connection signal="released" from="lose/restart_button" to="player" method="restart_game"]
-[connection signal="released" from="lose/go_back_button" to="." method="go_back"]
+[connection signal="released" from="lose/go_back_button" to="player" method="go_back"]
